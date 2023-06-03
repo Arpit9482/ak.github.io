@@ -1,0 +1,963 @@
+/* importing font style clicker and poppins for use  */
+@import url('https://fonts.googleapis.com/css2?family=Clicker+Script&family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+/* selects the root element of the document */
+/* global variables are declared here so to be used */
+:root
+{
+    --bg-black-900:#f2f2fc; /* "--" used to declare a variable stroing a color*/
+    --bg-black-100: #fdf9ff; /* this variable can be used anywhere in the website*/
+    --bg-black-50:#e8dfec; /* var(----bg-black-100) */
+    --text-black-900:#302e4d;
+    --text-black-700:#504e70;
+}
+
+body.dark{
+    --bg-black-900: #151515;
+    --bg-black-100: #222222;
+    --bg-black-50: #393939;
+    --text-black-900: #ffffff;
+    --text-black-700: #e9e9e9;
+}
+body{
+    line-height: 1.5;  /* two consecutive lines height difference */
+    font-size: 16px;
+    font-family: 'Poppins' sans-serif;
+}
+
+* /* represents all the tags will have these properties */
+{
+    margin: 0;
+    padding: 0;
+    outline: none; /* line drawn outside the element */
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+::before,::after  /* both are css selectors for inserting the following properites before n after the selected tags*/ 
+{
+    box-sizing: border-box;
+}
+ul
+{
+    list-style: none;
+}
+.section
+{
+    background: var(--bg-black-900);
+    min-height: 100vh; /* means takes entire view port height */
+    display: block; /* down down down place hoga boxes*/
+    padding:0 30px;
+    opacity: 1; /* refers to the transparency of the element */
+    position: fixed;
+    left: 270px;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+    overflow-y: auto;
+    overflow-x: auto;
+    transition: all 0.3s ease;
+} 
+
+.section.back-section
+{
+    z-index: 1;
+}
+.section.active
+{
+    z-index: 2;
+    opacity: 1;
+    animation: slideSection 1s ease;
+}
+
+@keyframes slideSection {
+    0%
+    {
+        transform: translateX(100%);
+    }
+    100%
+    {
+        transform: translateX(0%);
+    }
+}
+.hidden
+{
+    display: none !important; /* to provide more importance than other elements to it*/
+}
+.padd-15
+{
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.container
+{
+    max-width: 1100px;
+    width: 100%;
+    margin: auto;
+}
+
+.section .container
+{
+    padding-top: 60px;
+    padding-bottom: 70px;
+}
+
+.section-title
+{
+    flex: 0 0 100%;
+    max-width: 100%;
+    margin-bottom: 60px;
+}
+
+.section-title h2
+{
+    font-size: 50px;
+    color: var(--text-black-900);
+    font-weight: 700;
+    position: relative;
+} 
+
+.section-title h2::before
+{
+    content: ' ';
+    height: 4px;
+    width: 50px;
+    background-color: var(--skin-color);
+    position: absolute;
+    top: 100%;
+    left: 0;
+}
+
+.section-title h2::after{
+    content: ' ';
+    height: 4px;
+    width: 25px;
+    background-color: var(--skin-color);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin-top: 8px;
+}
+
+
+.row
+{
+    display: flex; /* depicts that it is a flex box */
+    flex-wrap: wrap;  /*  when we wrap screen it auto shifts to next line */
+    margin-left: -15px;
+    margin-right: -15px;
+    position: relative;
+
+}
+
+.btn
+{
+    font-size: 16px;
+    font-weight: 500;
+    padding: 12px 35px;
+    color: white;
+    border-radius: 40px;
+    display: inline-block;
+    white-space: nowrap; /* multiple white spaces collapse but text doesnt move to next line */
+    border: none;
+    background-color: var(--skin-color);
+    transition: all 0.3s ease;   /* all means sab change hoga,duration,timingfunction,delay where ease means slow fast then again slow */
+
+}
+
+.btn:hover
+{
+    transform: scale(1.05); /* makes tranisitons and animations better it scales up hire me on hover*/
+}
+
+.shadow-dark
+{
+    box-shadow: 0 0 40px rgba(48,46,77,0.15);
+}
+/* Aside protion of website */
+.aside
+{
+    width: 270px;
+    background:var(--bg-black-100);
+    position: fixed; /*  means this will be fixed no matter what happens even if we scroll up and down the portion wont move*/
+    left: 0;
+    top: 0;
+    padding: 30px;
+    height: 100%;
+    border-right: 1px solid var(--bg-black-50);
+    display: flex; /* juust like block box moves to next line */
+    justify-content: center; /* alignment in horizontal direction */
+    align-items: center; /* alignment in vertical direction */
+    z-index: 10; /* if boxes overlap then one having higher z-index appears first*/
+    transition: all 0.3s ease;
+}
+
+.aside .logo
+{
+    position: absolute; /* relative to its parent*/
+    top: 50px;
+    font-size: 30px;
+    text-transform: capitalize; /* All letters to capital */
+}
+
+.aside .logo a{
+    color: var(--text-black-900);
+    font-weight: 700;
+    padding: 15px 20px;
+    font-size: 30px;
+    letter-spacing: 5px;
+    position: relative;
+
+}
+
+.aside .logo a span
+{
+    font-family: 'Clicker Script',cursive;
+    font-size: 50px;
+    color: var(--skin-color);
+}
+
+.aside .logo a::before
+{
+    content: ' ';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-bottom: 5px solid var(--skin-color);
+    border-left : 5px solid var(--skin-color);
+    bottom: 0;
+    left: 0;
+
+}
+.aside .logo a::after {
+    content: ' ';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-top: 5px solid var(--skin-color);
+    border-right: 5px solid var(--skin-color);
+    top: 0;
+    right: 0;
+
+}
+.aside .nav-toggler
+{
+    height: 40px;
+    width: 45px;
+    border: 1px solid var(--bg-black-50);
+    cursor: pointer;
+    position: fixed;
+    left: 300px;
+    top: 20px;
+    border-radius: 5px;
+    background-color: var(--bg-black-100);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.aside .nav-toggler span
+{
+    height: 2px;
+    width: 18px;
+    background-color: var(--skin-color);
+    display: inline-block;
+    position: relative;
+}
+
+.aside .nav-toggler.open span
+{
+    background-color: transparent;
+} 
+
+.aside .nav-toggler span::before
+{
+    content: ' '; /* only used with after and before selector to insert genertaed output*/
+    height: 2px;
+    width: 18px;
+    background-color: var(--skin-color);
+    position:absolute;
+    top: -6px;
+    left: 0px;
+}
+
+.aside .nav-toggler.open span::before
+{
+    transform: rotate(45deg);
+    top: 0;
+}
+
+.aside .nav-toggler span::after   /* used this for creating 3 lines structure */
+{
+    content: ' '; /* only used with after and before selector to insert genertaed output*/
+    height: 2px;
+    width: 18px;
+    background-color: var(--skin-color);
+    position:absolute;
+    top: 6px;
+    left: 0px;
+}
+
+.aside .nav-toggler.open span::after 
+{
+    transform: rotate(-45deg);
+    top: 0;
+}
+
+.aside .nav
+{
+    margin-top: 50px;
+}
+
+.aside .nav li
+{
+    margin-bottom: 20px;
+    display: block;
+}
+
+.aside .nav li a
+{
+    font-size: 20px;
+    font-weight: 600;
+    display: block;
+    border-bottom: 1px solid var(--bg-black-50);
+    color: var(--text-black-700);
+    padding: 5px 15px;
+
+}
+
+.aside .nav li a.active
+{
+    color: var(--skin-color);    /* taken the variable in another style sheet */
+}
+
+.aside .nav li a i
+{
+    margin-right: 15px;   /* moves to right side */
+}
+
+/* home portion starts now */
+
+.home
+{
+    min-height:100vh ;
+    display: flex;
+    color: var(-text-black-900);
+}
+
+.home .home-info
+{
+    flex: 0 0 60%; /* flew grow --- flex shrink--- flex basis*/
+    max-width: 60%;
+}
+
+h3.hello
+{
+    font-size: 28px;
+    margin: 15px 0;
+    color: var(--text-black-900);
+}
+
+h3.hello span
+{
+    font-family: 'Clicker Script',cursive;
+    font-size: 60px;
+    font-weight: 700;
+    color: var(--skin-color);
+}
+
+h3.my-profession
+{
+    font-size: 30px;
+    margin: 15px 0;
+    color: var(--text-black-900);
+}
+
+.typing
+{
+    color: var(--skin-color );
+}
+
+.home-info p
+{
+    margin-bottom: 70px;
+    font-size: 20px;
+    color: var(--text-black-900);
+}
+.home .home-img
+{
+    flex: 0 0 40%;
+    max-width: 40%;
+    text-align: center;
+    position: relative;
+}
+
+.home-img::before
+{
+    content: ' ';
+    position: absolute;
+    height: 80px;
+    width: 80px;
+    border-left: 10px solid var(--skin-color);
+    border-top: 10px solid var(--skin-color);
+    left: -20px;
+    top: -40px;
+
+}
+.home-img::after
+{
+    content: ' ';
+    position: absolute;
+    height: 80px;
+    width: 80px;
+    border-bottom: 10px solid var(--skin-color);
+    border-right: 10px solid var(--skin-color);
+    right: 20px;
+    bottom: -40px;
+
+}
+.home .home-img img
+{
+    height: 400px;
+    margin: auto;
+    border-radius: 5px;
+} 
+
+/* About */
+
+.about .about-content
+{
+    flex: 0 0 100%;
+    max-width: 100%;
+
+}
+
+.about .about-content .about-text
+{
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+
+.about .about-content .about-text h3
+{
+    font-size: 24px;
+    margin-bottom: 25px;
+    font-weight: 700;
+    color: var(--text-black-900);
+
+}
+.about .about-content .about-text h3 span{
+    color: var(--skin-color);
+    font-size: 35px;
+}
+
+.about .about-content .about-text p
+{
+    font-size: 24px;
+    line-height: 30px;
+    color: var(--text-black-700);
+}
+
+.about .about-content .personal-info
+{
+    flex: 0 0 60%;
+    max-width: 60%;
+    margin-top: 50px;
+}
+
+.about .about-content .personal-info .info-item
+{
+    flex:0 0 50%;
+    max-width: 50%;
+}
+
+.about .about-content .personal-info .info-item p 
+{
+    font-weight: 600;
+    padding: 10px 0;
+    font-size: 20px;
+    color: var(--text-black-900);
+    border-bottom: 1px solid var(--bg-black-50);
+}
+
+.about .about-content .personal-info .info-item p span{
+    font-weight: 400;
+    color: var(--text-black-700);
+    margin-left: 4px;
+    display: inline-block;
+}
+
+.about .about-content .personal-info .buttons
+{
+    margin-top: 30px;
+}
+
+.about .about-content .personal-info .buttons .btn
+{
+    font-size: 20px;
+    margin-top: 20px;
+    margin-right: 20px;
+}
+
+.about .about-content .skills
+{
+    flex: 0 0 40%;
+    max-width: 40%;
+    margin-top: 40px;
+}
+
+.about .about-content .skills .skill-item
+{
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+
+.about .about-content .skills .skill-item h5
+{
+    line-height: 50px;
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--text-black-900);
+    text-transform: capitalize;
+}
+
+.about .about-content .skills .skill-item .progress
+{
+    background-color: var(--bg-black-50);
+    height: 7px;
+    border-radius: 4px;
+    width: 100%;
+    position: relative;
+}
+
+.about .about-content .skills .skill-item
+{
+    margin-bottom: 20px;
+}
+
+.about .about-content .skills .skill-item .progress .progress-in
+{
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    border-radius: 4px;
+    background-color: var(--skin-color);
+}
+
+.about .about-content .skills .skill-item .progress .skill-percent
+{
+    position: absolute;
+    right: 0;
+    color: var(--text-black-900);
+    top: -40px;
+    font-weight: 400;
+    line-height: 40px;
+}
+
+.about .about-content .education
+{
+    flex: 0 0 50%;
+    max-width: 50%;
+    margin-top: 40px;
+}
+.about .about-content .experience {
+    flex: 0 0 50%;
+    max-width: 50%;
+    margin-top: 40px;
+}
+
+.about .about-content h3.title 
+{
+    font-size: 24px;
+    margin-bottom: 30px;
+    font-weight: 700;
+    color: var(--text-black-900);
+}
+
+.about .about-content .timeline-box
+{
+    flex:0 0 100%;
+    max-width: 100%;
+}
+
+.about .about-content .timeline
+{
+    background-color: var(--bg-black-100);
+    padding: 30px 15px;
+    border: 1px solid var(--bg-black-50);
+    border-radius: 10px;
+    width: 100%;
+    position: relative;
+}
+
+.about .about-content .timeline .timeline-item
+{
+    position: relative;
+    padding-left: 37px;
+    padding-bottom: 50px;
+}
+
+.about .about-content .timeline .timeline-item:last-child /* The last most timeline item*/
+{
+    padding-bottom: 0;
+}
+
+.about .about-content .timeline .timeline-item::before /* The vertical line in timeline */
+{
+    content: '';
+    width: 2px;
+    position: absolute;
+    height: 100%;
+    left: 7px;
+    top: 0;
+    background-color: var(--skin-color);
+}
+
+.about .about-content .timeline .circle-dot /* Makes circle dots in the line */
+{
+    
+    position: absolute;
+    height: 15px;
+    width: 15px;
+    left: 0;
+    top: 0;
+    border-radius: 50%;
+    background-color: var(--skin-color)
+
+}
+
+.about .about-content .timeline .timeline-date
+{
+    font-weight: 400;
+    font-size: 18px;
+    margin-bottom: 12px;
+    color: var(--text-black-700);
+}
+
+.about .about-content .timeline .timeline-date .fa
+{
+    margin-right: 10px;
+}
+
+.about .about-content .timeline .timeline-title
+{
+    font-weight: 700;
+    font-size: 24px;
+    margin-bottom:15px;
+    color: var(--text-black-900);
+    text-transform: capitalize; /* Captializes only the first letter of every word*/
+}
+
+.about .about-content .timeline .timeline-text
+{
+    line-height: 25px;
+    font-size: 18px;
+    text-align: justify;
+    color: var(--text-black-700);
+}
+
+/* Services */
+
+.service .container
+{
+    padding-bottom: 40px;
+}
+.service .service-item
+{
+    margin-bottom: 30px;
+    flex: 0 0 33.3%;
+    max-width: 33%;
+}
+
+.service .service-item .service-item-inner
+{
+    background-color: var(--bg-black-100);
+    border-color: var(--bg-black-50);
+    border-radius: 10px;
+    padding: 30px 15px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.service .service-item .service-item-inner:hover{
+    box-shadow: 0 0 70px rgba(48,46,77,0.15);
+}
+
+.service .service-item .service-item-inner .icon
+{
+    height: 120px;
+    width: 120px;
+    border-radius: 80%;
+    display: block;
+    margin: 0 auto 30px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.service .service-item .service-item-inner .icon .fa
+{
+    margin-top: 30px;
+    font-size: 90px;
+    line-height: 60px;
+    color: var(--skin-color);
+}
+
+.service .service-item .service-item-inner .icon:hover
+{
+    background-color: var(--skin-color);
+}
+
+.service .service-item .service-item-inner .icon:hover .fa
+{
+    font-size: 70px;
+    color: #ffffff;
+}
+
+.service .service-item .service-item-inner h3
+{
+    font-size: 25px;
+    margin-bottom: 20px;
+    color: var(--text-black-900);
+    font-weight: 700;
+    text-transform: capitalize;
+}
+
+.service .service-item .service-item-inner p
+{
+    margin:auto auto auto;
+    font-size: 20px;
+    line-height: 25px;
+    color: var(--text-black-700);
+}
+
+
+/* Portfolio */
+
+.portfolio .container
+{
+    padding-bottom: 40px;
+}
+.portfolio .portfolio-heading
+{
+    flex: 0 0 100%;
+    max-width: 100%;
+    margin-bottom: 40px;
+}
+
+.portfolio .portfolio-heading
+{
+    color: var(--text-black-900);
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.portfolio .portfolio-item
+{
+    flex: 0 0 33.3%;
+    max-width: 33.3%;
+    margin-bottom: 30px;
+}
+
+.portfolio  .portfolio-item-inner
+{
+    border: 6px solid var(--bg-black-100);
+    border-radius: 10px;
+    overflow: hidden; /* overlapping hata do simple */
+    cursor: pointer;
+}
+
+.portfolio .portfolio-item-inner .portfolio-img img{
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+
+/* Contact us */
+
+.contact-title
+{
+    color: var(--skin-color);
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+.contact-sub-title
+{
+    color: var(--text-black-900);
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 50px;
+}
+
+.contact .contact-info-item
+{
+    flex: 0 0 25%;
+    max-width: 25%;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.contact .contact-info-item .icon
+{
+    display: inline-block;
+}
+
+.contact .contact-info-item .icon .fa
+{
+    color: var(--skin-color);
+    font-size: 30px;
+}
+
+.contact .contact-info-item h4
+{
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-black-900);
+    text-transform: capitalize;
+    margin: 10px 0 0;
+}
+
+.contact .contact-info-item p
+{
+    font-size: 22px;
+    color:var(--text-black-700);
+}
+
+.contact .contact-info-item h3
+{
+    font-size: 18px;
+    line-height: 25px;
+    font-weight: 400;
+    color: var(--text-black-700);
+}
+
+.contact .contact-form
+{
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+
+.contact .contact-form .col-6
+{
+    flex: 0 0 50%;
+    max-width: 50%;
+}
+
+.contact .contact-form .col-12 {
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+
+.contact .contact-form .form-item
+{
+    margin-bottom: 30px;
+}
+
+.contact .contact-form .form-item .form-control
+{
+    width: 100%;
+    height: 50px;
+    border-radius: 25px;
+    background-color: var(--bg-black-100);
+    border: 1px solid var(--bg-black-50);
+    padding: 10px 25px;
+    font-size: 15px;
+    color: var(--text-black-700);
+    transition: all 0.3s ease;
+}
+
+.contact .contact-form .form-item .form-control:focus
+{
+    box-shadow:0 0 40px rgba(48,46,77,0.15);
+}
+
+
+.contact .contact-form .form-item textarea.form-control
+{
+    height: 200px;
+}
+
+.contact .contact-form .btn
+{
+    height: 50px;
+    padding: 0 50px;
+}
+
+
+/* In order to make it responsive */
+
+@media (max-width:1190px)  
+{
+    .aside
+    {
+        left: -270px;
+    }    
+    .aside.open{
+        left: 0;
+    }
+    .aside .nav-toggler
+    {
+        display: flex;
+        left: 30px;
+    }
+    .aside .nav-toggler.open{
+        left: 300px;
+    }
+    
+    .section
+    {
+        left: 0;
+    }
+        .section.open {
+            left: 270px;
+        }
+    .about .about-content .personal-info .info-item p span
+    {
+        display: block;
+        margin-left: 0;
+    }
+
+}
+
+@media (max-width:991px)
+{
+    .contact .contact-info-item,
+    .portfolio .portfolio-item,
+    .service .service-item
+    {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+    .home.home-info
+    {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+    .home .home-img
+    {
+        display: none;
+    }
+}
+
+@media (max-width:767px)
+{
+    .contact .contact-form .col-6,
+    .contact .contact-info-item,
+    .service .service-item,
+    .portfolio .portfolio-item,
+    .about .about-content .education,
+    .about .about-content .experience,
+    .about .about-content .personal-info,
+    .about .about-content .skills
+    {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
+
+
